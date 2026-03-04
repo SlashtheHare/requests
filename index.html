@@ -11,7 +11,6 @@
 
 <div class="wrapper">
 
-  <!-- ══ HEADER ══ -->
   <header class="site-header">
     <div class="lamp-line"></div>
     <span class="eyebrow">Personal Correspondence</span>
@@ -19,7 +18,6 @@
     <div class="drip-deco"></div>
   </header>
 
-  <!-- ══ BEFORE YOU SEND ══ -->
   <div class="intro">
     <p class="intro-label">⚠ Before you send</p>
     <ul class="intro-list">
@@ -32,68 +30,105 @@
     </ul>
   </div>
 
-  <!-- ══ FORM WRAP ══ -->
   <div class="form-wrap">
 
     <div class="form-tabs-row">
-      <div class="form-tab-label active">New Message</div>
+      <div class="form-tab-label active" data-tab="message">New Message</div>
+      <div class="form-tab-label" data-tab="links">Links</div>
     </div>
 
     <div class="form-card">
 
-      <div class="form-inner">
-        <form id="request-form" action="#" method="POST">
+      <!-- MESSAGE PANEL -->
+      <div class="tab-panel" id="panel-message">
+        <div class="form-inner">
+          <form id="request-form" action="#" method="POST">
 
-          <div class="form-heading">Drop a Message</div>
-          <div class="form-subheading">Request / Question / Note</div>
+            <div class="form-heading">Drop a Message</div>
+            <div class="form-subheading">Request / Question / Note</div>
 
-          <div class="field-row">
-            <div class="field-group">
-              <label class="field-label" for="f-name">Name / Handle</label>
-              <input type="text" id="f-name" name="name" placeholder="or leave blank" autocomplete="off"/>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="f-name">Name / Handle</label>
+                <input type="text" id="f-name" name="name" placeholder="or leave blank" autocomplete="off"/>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="f-type">Type <span class="req">*</span></label>
+                <select id="f-type" name="type" required>
+                  <option value="" disabled selected>— select —</option>
+                  <option value="art-request">Art Request</option>
+                  <option value="trade-interest">Trade Interest</option>
+                  <option value="question">Question</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
             </div>
+
             <div class="field-group">
-              <label class="field-label" for="f-type">Type <span class="req">*</span></label>
-              <select id="f-type" name="type" required>
-                <option value="" disabled selected>— select —</option>
-                <option value="art-request">Art Request</option>
-                <option value="trade-interest">Trade Interest</option>
-                <option value="question">Question</option>
-                <option value="feedback">Feedback</option>
-                <option value="other">Other</option>
-              </select>
+              <label class="field-label" for="f-msg">Message <span class="req">*</span></label>
+              <textarea id="f-msg" name="message" maxlength="1000" placeholder="Say what you came to say." required></textarea>
+              <div class="char-counter" id="char-count">0 / 1000</div>
             </div>
+
+            <label class="anon-row" for="f-anon">
+              <input type="checkbox" id="f-anon" name="anonymous" value="yes"/>
+              <span class="anon-label"><strong>Send anonymously</strong> — your name won't be attached</span>
+            </label>
+
+            <button type="submit" class="submit-btn">
+              <span>Send Message ↗</span>
+            </button>
+
+          </form>
+
+          <div class="form-success" id="form-success">
+            <span class="success-glyph">†</span>
+            <div class="success-title">Message received.</div>
+            <p class="success-msg">It's in my hands now. I'll get to it when I get to it.</p>
           </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-msg">Message <span class="req">*</span></label>
-            <textarea id="f-msg" name="message" maxlength="1000" placeholder="Say what you came to say." required></textarea>
-            <div class="char-counter" id="char-count">0 / 1000</div>
-          </div>
-
-          <label class="anon-row" for="f-anon">
-            <input type="checkbox" id="f-anon" name="anonymous" value="yes"/>
-            <span class="anon-label"><strong>Send anonymously</strong> — your name won't be attached</span>
-          </label>
-
-          <button type="submit" class="submit-btn">
-            <span>Send Message ↗</span>
-          </button>
-
-        </form>
-
-        <!-- SUCCESS STATE -->
-        <div class="form-success" id="form-success">
-          <span class="success-glyph">†</span>
-          <div class="success-title">Message received.</div>
-          <p class="success-msg">It's in my hands now. I'll get to it when I get to it.</p>
         </div>
       </div>
 
-    </div><!-- /form-card -->
-  </div><!-- /form-wrap -->
+      <!-- LINKS PANEL -->
+      <div class="tab-panel" id="panel-links" style="display:none;">
+        <div class="form-inner">
+          <div class="form-heading">Links</div>
+          <div class="form-subheading">External &amp; Elsewhere</div>
+          <p class="case-label">Find me around the web</p>
+          <div class="social-link-grid">
+            <a class="social-link-card" href="https://slashthehare.com" target="_blank">
+              <span class="slc-icon">✦</span>
+              <span class="slc-label">Commissions</span>
+            </a>
+            <a class="social-link-card" href="https://bsky.app/profile/slashthehare.com" target="_blank">
+              <span class="slc-icon">☁</span>
+              <span class="slc-label">Bluesky</span>
+            </a>
+            <a class="social-link-card" href="https://furaffinity.net/user/slashthehare" target="_blank">
+              <span class="slc-icon">✒</span>
+              <span class="slc-label">FurAffinity</span>
+            </a>
+            <a class="social-link-card" href="https://toyhou.se/SlashtheHare" target="_blank">
+              <span class="slc-icon">⌂</span>
+              <span class="slc-label">Toyhou.se</span>
+            </a>
+            <a class="social-link-card" href="https://slashthehare.github.io/artprefs/" target="_blank">
+              <span class="slc-icon">◈</span>
+              <span class="slc-label">Art Prefs</span>
+            </a>
+            <a class="social-link-card" href="https://slashthehare.github.io/trades/" target="_blank">
+              <span class="slc-icon">⇄</span>
+              <span class="slc-label">Art Trades</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
-</div><!-- /wrapper -->
+    </div>
+  </div>
+
+</div>
 
 <footer>
   <p>

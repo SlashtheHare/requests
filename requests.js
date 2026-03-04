@@ -72,3 +72,20 @@ form.addEventListener('submit', async (e) => {
     alert('Something went wrong. Please try again.');
   }
 });
+
+/* ════════════════════════════════
+   TAB SWITCHING
+════════════════════════════════ */
+document.querySelectorAll('.form-tab-label').forEach(tab => {
+  tab.addEventListener('click', () => {
+    // update active tab
+    document.querySelectorAll('.form-tab-label').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // show matching panel, hide others
+    const target = tab.dataset.tab;
+    document.querySelectorAll('.tab-panel').forEach(panel => {
+      panel.style.display = panel.id === `panel-${target}` ? 'block' : 'none';
+    });
+  });
+});

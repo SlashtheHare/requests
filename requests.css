@@ -477,3 +477,93 @@ footer a:hover { color: var(--chalk-dim); }
   .field-row { grid-template-columns: 1fr; }
   .site-title { font-size: 2.2rem; }
 }
+
+
+/* ═══════════════════════════
+   TAB SWITCHING
+═══════════════════════════ */
+.form-tab-label { cursor: pointer; }
+.tab-panel { display: block; }
+
+/* ═══════════════════════════
+   LINKS PANEL
+═══════════════════════════ */
+.case-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.case-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--grout);
+}
+
+.social-link-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.social-link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 1rem 0.5rem;
+  background: var(--stone);
+  border: 1px solid var(--grout);
+  border-bottom: 2px solid rgba(107,52,24,0.45);
+  color: var(--chalk);
+  text-decoration: none;
+  font-family: 'Courier Prime', monospace;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.social-link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--blood);
+  transform: translateY(100%);
+  transition: transform 0.22s ease;
+  z-index: 0;
+}
+.social-link-card:hover::before { transform: translateY(0); }
+.social-link-card:hover {
+  border-color: var(--red2);
+  border-bottom-color: var(--red2);
+  color: var(--paper);
+}
+
+.slc-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: var(--red2);
+  transition: color 0.15s;
+  line-height: 1;
+}
+.social-link-card:hover .slc-icon { color: var(--paper2); }
+
+.slc-label {
+  position: relative;
+  z-index: 1;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+  .social-link-grid { grid-template-columns: repeat(2, 1fr); }
+}
