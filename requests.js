@@ -51,7 +51,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     // ── Swap this URL for your Worker endpoint ──
-    const WORKER_URL = 'slashrequests.rudacpbaptista.workers.dev';
+    const WORKER_URL = 'https://slashrequests.rudacpbaptista.workers.dev';
 
     const res = await fetch(WORKER_URL, {
       method:  'POST',
