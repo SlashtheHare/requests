@@ -567,3 +567,34 @@ footer a:hover { color: var(--chalk-dim); }
 @media (max-width: 500px) {
   .social-link-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ═══════════════════════════
+   KO-FI PANEL
+═══════════════════════════ */
+.kofi-wrap {
+  position: relative;
+  background: var(--stone);
+  border: 1px solid var(--grout);
+  border-bottom: 2px solid rgba(107,52,24,0.45);
+  overflow: hidden;
+}
+/* dark overlay tint — Ko-fi iframe is white-bg so we soften the contrast */
+.kofi-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8,4,8,0.08);
+  pointer-events: none;
+  z-index: 1;
+}
+/* faint rust border accent */
+.kofi-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--rust2), transparent);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
