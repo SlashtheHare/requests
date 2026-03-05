@@ -182,19 +182,47 @@ body::after {
 }
 .intro-label {
   font-family: 'Oswald', sans-serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.35em;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--red2);
-  margin-bottom: 0.65rem;
-  display: flex; align-items: center; gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
 }
+.intro-label::-webkit-details-marker { display: none; }
 .intro-label::after {
   content: '';
-  flex: 1; height: 1px;
+  flex: 1;
+  height: 1px;
   background: rgba(122,16,16,0.3);
 }
-.intro-list { list-style: none; padding: 0; }
+.intro-label::before {
+  content: '▸';
+  font-size: 0.6rem;
+  color: var(--red2);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+details[open] > .intro-label::before {
+  transform: rotate(90deg);
+}
+
+.intro-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+}
+details[open] > .intro-list {
+  grid-template-rows: 1fr;
+  margin-top: 0.65rem;
+}
 .intro-list li {
   font-size: 0.83rem;
   color: var(--chalk);
@@ -202,6 +230,7 @@ body::after {
   position: relative;
   line-height: 1.65;
   border-bottom: 1px solid rgba(255,255,255,0.04);
+  min-height: 0;
 }
 .intro-list li:last-child { border-bottom: none; }
 .intro-list li::before {
@@ -569,32 +598,93 @@ footer a:hover { color: var(--chalk-dim); }
 }
 
 /* ═══════════════════════════
-   KO-FI PANEL
+   KO-FI CARD
 ═══════════════════════════ */
-.kofi-wrap {
-  position: relative;
+.kofi-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem 2rem;
   background: var(--stone);
   border: 1px solid var(--grout);
   border-bottom: 2px solid rgba(107,52,24,0.45);
-  overflow: hidden;
+  position: relative;
 }
-/* dark overlay tint — Ko-fi iframe is white-bg so we soften the contrast */
-.kofi-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(8,4,8,0.08);
-  pointer-events: none;
-  z-index: 1;
-}
-/* faint rust border accent */
-.kofi-wrap::after {
+.kofi-card::after {
   content: '';
   position: absolute;
   top: 0; bottom: 0; left: 0;
   width: 2px;
   background: linear-gradient(to bottom, transparent, var(--rust2), transparent);
   opacity: 0.5;
-  pointer-events: none;
-  z-index: 2;
+}
+
+.kofi-skull {
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: var(--red2);
+  text-shadow: 2px 2px 0 var(--blood), 0 0 18px rgba(100,10,10,0.35);
+  animation: flicker 9s ease-in-out infinite;
+}
+
+.kofi-blurb {
+  font-size: 0.82rem;
+  color: var(--chalk-dim);
+  font-style: italic;
+  max-width: 360px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.75;
+}
+
+.kofi-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rust2), transparent);
+  margin: 0 auto 1.6rem;
+}
+
+.kofi-btn {
+  display: inline-block;
+  background: var(--red);
+  color: var(--paper);
+  border: 1px solid var(--red2);
+  border-bottom: 3px solid var(--blood);
+  padding: 0.75rem 2rem;
+  font-family: 'Butcherman', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(50,6,6,0.5);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
+}
+.kofi-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--red2);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.kofi-btn:hover::before { transform: translateX(0); }
+.kofi-btn:hover { box-shadow: 0 4px 22px rgba(120,16,16,0.6); }
+.kofi-btn:active { transform: translateY(1px); }
+
+.kofi-btn-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.kofi-cup { font-style: normal; font-size: 1rem; }
+.kofi-arrow { opacity: 0.7; font-family: 'Courier Prime', monospace; }
+
+.kofi-note {
+  margin-top: 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--faded);
 }
